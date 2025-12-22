@@ -1,11 +1,24 @@
 vi:
-  # ActiveRecord errors
+  # ActiveRecord
   activerecord:
+    models:
+      reflectional_symmetry_puzzle: "Câu đố Phản chiếu"
+      reflectional_symmetry_puzzle_entry: "Mục câu đố"
     errors:
       models:
         quiz_question:
           attributes:
             image:
+              invalid_content_type: "phải là PNG, JPG hoặc GIF"
+              file_too_large: "phải nhỏ hơn 10MB"
+        reflectional_symmetry_puzzle_entry:
+          attributes:
+            left_image:
+              blank: "phải được tải lên"
+              invalid_content_type: "phải là PNG, JPG hoặc GIF"
+              file_too_large: "phải nhỏ hơn 10MB"
+            right_image:
+              blank: "phải được tải lên"
               invalid_content_type: "phải là PNG, JPG hoặc GIF"
               file_too_large: "phải nhỏ hơn 10MB"
 
@@ -26,6 +39,8 @@ vi:
     sign_out: "Đăng xuất"
     dashboard: "Bảng điều khiển"
     quizzes: "Câu hỏi"
+    puzzles: "Câu đố"
+    reflection_puzzles: "Phản chiếu"
     settings: "Cài đặt"
     account: "Tài khoản"
     admin: "Quản trị"
@@ -236,6 +251,31 @@ vi:
     previous: "Trước đó"
     search: "Tìm kiếm"
     language: "Ngôn ngữ"
+    view_all: "Xem tất cả"
+
+  # Reflectional Symmetry Puzzles
+  reflectional_symmetry_puzzles:
+    index:
+      title: "Câu đố Phản chiếu"
+      subtitle: "Ghép nửa trái và nửa phải để hoàn thành hình ảnh đối xứng"
+      puzzle_count:
+        one: "%{count} câu đố"
+        other: "%{count} câu đố"
+      entries_count:
+        one: "%{count} cặp"
+        other: "%{count} cặp"
+      play: "Chơi"
+    show:
+      all_puzzles: "Tất cả câu đố"
+      left_pieces: "Mảnh bên trái"
+      right_pieces: "Mảnh bên phải"
+      select_left: "Chọn một mảnh bên trái"
+      select_right: "Chọn một mảnh bên phải"
+      matches_found: "Cặp đã ghép"
+      remaining: "Còn lại"
+    empty:
+      title: "Chưa có câu đố"
+      description: "Hãy quay lại sau để xem câu đố phản chiếu mới!"
 
   # Admin
   admin:
@@ -243,6 +283,7 @@ vi:
     access_denied: "Truy cập bị từ chối. Bạn phải là quản trị viên."
     nav:
       quiz_questions: "Câu hỏi Quiz"
+      reflectional_symmetry_puzzles: "Câu đố Phản chiếu"
       back_to_app: "Quay lại ứng dụng"
     quiz_questions:
       created: "Câu hỏi quiz đã được tạo thành công."
@@ -287,3 +328,42 @@ vi:
         errors:
           one: "1 lỗi ngăn câu hỏi này được lưu"
           other: "%{count} lỗi ngăn câu hỏi này được lưu"
+    reflectional_symmetry_puzzles:
+      created: "Câu đố đã được tạo thành công."
+      updated: "Câu đố đã được cập nhật thành công."
+      deleted: "Câu đố đã được xóa thành công."
+      delete_confirm: "Bạn có chắc chắn muốn xóa câu đố này?"
+      entries_count:
+        one: "%{count} mục"
+        other: "%{count} mục"
+      index:
+        title: "Câu đố Phản chiếu"
+        subtitle: "Quản lý câu đố đối xứng phản chiếu"
+      new:
+        title: "Câu đố mới"
+      edit:
+        title: "Chỉnh sửa câu đố"
+      empty:
+        title: "Chưa có câu đố nào"
+        description: "Bắt đầu bằng cách tạo câu đố phản chiếu đầu tiên."
+      fields:
+        title: "Tiêu đề"
+        description: "Mô tả"
+        language: "Ngôn ngữ"
+      filters:
+        language: "Ngôn ngữ:"
+        all: "Tất cả"
+      form:
+        title_placeholder: "Nhập tiêu đề câu đố..."
+        description_placeholder: "Nhập mô tả (tùy chọn)..."
+        entries_hint: "Thêm các cặp hình ảnh cho câu đố"
+        add_entry: "Thêm mục"
+        errors:
+          one: "1 lỗi ngăn câu đố này được lưu"
+          other: "%{count} lỗi ngăn câu đố này được lưu"
+      entries: "Các mục"
+      entry: "Mục"
+      entry_number: "Mục #%{number}"
+      left_image: "Hình bên trái"
+      right_image: "Hình bên phải"
+      no_entries: "Chưa có mục nào. Thêm các cặp hình ảnh vào câu đố này."

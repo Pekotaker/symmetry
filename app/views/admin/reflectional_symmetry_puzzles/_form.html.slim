@@ -1,0 +1,48 @@
+= form_with model: [:admin, @puzzle], class: "space-y-6" do |f|
+  - if @puzzle.errors.any?
+    .rounded-lg.border.border-red-500/20.bg-red-500/10.p-4
+      .flex.items-start.gap-3
+        svg.h-5.w-5.text-red-400 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"
+        div
+          h3.text-sm.font-medium.text-red-400 = t('admin.reflectional_symmetry_puzzles.form.errors', count: @puzzle.errors.count)
+          ul.mt-2.list-disc.list-inside.text-sm.text-red-300
+            - @puzzle.errors.full_messages.each do |message|
+              li = message
+
+  .rounded-xl.border.border-zinc-800.bg-zinc-900.p-6.space-y-6
+    / Language
+    div
+      = f.label :language, t('admin.reflectional_symmetry_puzzles.fields.language'), class: "block text-sm font-medium text-zinc-300"
+      = f.select :language, ReflectionalSymmetryPuzzle.languages.keys.map { |l| [l.upcase, l] }, {}, class: "mt-2 block w-full max-w-xs rounded-lg border-0 bg-zinc-800 px-4 py-3 text-white ring-1 ring-inset ring-zinc-700 transition-colors focus:ring-2 focus:ring-amber-500"
+
+    / Title
+    div
+      = f.label :title, t('admin.reflectional_symmetry_puzzles.fields.title'), class: "block text-sm font-medium text-zinc-300"
+      = f.text_field :title, class: "mt-2 block w-full rounded-lg border-0 bg-zinc-800 px-4 py-3 text-white placeholder-zinc-500 ring-1 ring-inset ring-zinc-700 transition-colors focus:ring-2 focus:ring-amber-500", placeholder: t('admin.reflectional_symmetry_puzzles.form.title_placeholder')
+
+    / Description
+    div
+      = f.label :description, t('admin.reflectional_symmetry_puzzles.fields.description'), class: "block text-sm font-medium text-zinc-300"
+      = f.text_area :description, rows: 3, class: "mt-2 block w-full rounded-lg border-0 bg-zinc-800 px-4 py-3 text-white placeholder-zinc-500 ring-1 ring-inset ring-zinc-700 transition-colors focus:ring-2 focus:ring-amber-500", placeholder: t('admin.reflectional_symmetry_puzzles.form.description_placeholder')
+
+  / Entries section
+  .rounded-xl.border.border-zinc-800.bg-zinc-900.p-6.space-y-4 data-controller="puzzle-entries" data-puzzle-entries-url-value=api_puzzle_entries_path
+    .flex.items-center.justify-between
+      div
+        h3.text-sm.font-medium.text-zinc-300 = t('admin.reflectional_symmetry_puzzles.entries')
+        p.mt-1.text-xs.text-zinc-500 = t('admin.reflectional_symmetry_puzzles.form.entries_hint')
+      button.inline-flex.items-center.gap-1.rounded-lg.bg-zinc-800.px-3.py-1.5.text-sm.font-medium.text-white.transition-colors.hover:bg-zinc-700 type="button" data-action="click->puzzle-entries#addEntry"
+        svg.h-4.w-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"
+        = t('admin.reflectional_symmetry_puzzles.form.add_entry')
+
+    #entries-container.space-y-4 data-puzzle-entries-target="container"
+      = f.fields_for :entries do |entry_form|
+        = render "admin/reflectional_symmetry_puzzles/entry_fields", f: entry_form
+
+  / Actions
+  .flex.items-center.justify-end.gap-3
+    = link_to t('common.cancel'), admin_reflectional_symmetry_puzzles_path, class: "rounded-lg px-4 py-2.5 text-sm font-medium text-zinc-400 transition-colors hover:text-white"
+    = f.submit class: "rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:shadow-xl hover:shadow-orange-500/30 cursor-pointer"
+

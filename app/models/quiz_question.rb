@@ -2,7 +2,7 @@ class QuizQuestion < ApplicationRecord
   enum :language, { en: 0, vi: 1 }
 
   belongs_to :quiz_category, optional: true
-  has_one_attached :image
+  has_one_attached :image, dependent: :purge_later
 
   validates :title, presence: true
   validates :answers, presence: true

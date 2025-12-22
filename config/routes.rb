@@ -40,15 +40,20 @@ Rails.application.routes.draw do
   # Quizzes
   resources :quizzes, only: [:index, :show]
 
+  # Reflectional Symmetry Puzzles
+  resources :reflectional_symmetry_puzzles, only: [:index, :show], path: "puzzles/reflection"
+
   # API (AJAX endpoints)
   namespace :api do
     get "quiz_feedback", to: "quiz_feedback#show"
     resources :answer_rows, only: [:create]
+    resources :puzzle_entries, only: [:create]
   end
 
   # Admin
   namespace :admin do
     root "quiz_questions#index"
     resources :quiz_questions
+    resources :reflectional_symmetry_puzzles, path: "puzzles/reflection"
   end
 end

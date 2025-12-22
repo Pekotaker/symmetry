@@ -68,3 +68,6 @@ gem "letter_opener_web", "~> 3.0", group: :development
 gem "slim-rails", "~> 4.0"
 
 gem "pundit", "~> 2.5"
+
+# Cloudinary for Active Storage in production
+gem "cloudinary", "~> 1.29"

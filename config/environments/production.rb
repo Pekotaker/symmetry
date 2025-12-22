@@ -30,8 +30,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Sendfile" # for Apache
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  # Store uploaded files on Cloudinary in production
+  config.active_storage.service = :cloudinary
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -70,18 +70,21 @@ Rails.application.configure do
   # Deliver emails via Sidekiq (async)
   config.action_mailer.deliver_later_queue_name = "mailers"
 
-  # Production email configuration
+  # Production email configuration (Mailtrap)
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch("SMTP_ADDRESS", "smtp.gmail.com"),
-    port: ENV.fetch("SMTP_PORT", 587),
-    domain: ENV.fetch("SMTP_DOMAIN", "localhost"),
+    address: ENV.fetch("SMTP_ADDRESS", "live.smtp.mailtrap.io"),
+    port: ENV.fetch("SMTP_PORT", 587).to_i,
+    domain: ENV.fetch("SMTP_DOMAIN", "symmetry.onrender.com"),
     user_name: ENV["SMTP_USERNAME"],
     password: ENV["SMTP_PASSWORD"],
-    authentication: "plain",
+    authentication: :plain,
     enable_starttls_auto: true
   }
+
+  # Default URL for mailer links
+  config.action_mailer.default_url_options = { host: ENV.fetch("APP_HOST", "symmetry.onrender.com"), protocol: "https" }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -94,10 +97,12 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  # config.hosts = [
-  #   "example.com",     # Allow requests from example.com
-  #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
-  # ]
-  # Skip DNS rebinding protection for the default health check endpoint.
-  # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+  config.hosts = [
+    ENV["APP_HOST"],
+    /.*\.onrender\.com/,  # Allow Render subdomains
+    /.*\.render\.com/
+  ].compact
+
+  # Skip DNS rebinding protection for the health check endpoint
+  config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end

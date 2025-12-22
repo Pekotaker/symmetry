@@ -1,13 +1,9 @@
 require "sidekiq/web"
 
 Rails.application.routes.draw do
-  # Sidekiq Web UI (authenticated users only in production)
-  if Rails.env.development?
+  # Sidekiq Web UI (admin users only)
+  authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => "/sidekiq"
-  else
-    authenticate :user do
-      mount Sidekiq::Web => "/sidekiq"
-    end
   end
 
   # Locale switching

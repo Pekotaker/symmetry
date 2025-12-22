@@ -36,4 +36,19 @@ Rails.application.routes.draw do
 
   # Dashboard
   get "dashboard", to: "dashboard#index"
+
+  # Quizzes
+  resources :quizzes, only: [:index, :show]
+
+  # API (AJAX endpoints)
+  namespace :api do
+    get "quiz_feedback", to: "quiz_feedback#show"
+    resources :answer_rows, only: [:create]
+  end
+
+  # Admin
+  namespace :admin do
+    root "quiz_questions#index"
+    resources :quiz_questions
+  end
 end

@@ -1,4 +1,14 @@
 en:
+  # ActiveRecord errors
+  activerecord:
+    errors:
+      models:
+        quiz_question:
+          attributes:
+            image:
+              invalid_content_type: "must be a PNG, JPG, or GIF"
+              file_too_large: "must be less than 10MB"
+
   # Site-wide
   site:
     name: "Symmetry"
@@ -15,8 +25,10 @@ en:
     sign_up: "Get started"
     sign_out: "Sign out"
     dashboard: "Dashboard"
+    quizzes: "Quizzes"
     settings: "Settings"
     account: "Account"
+    admin: "Admin Panel"
 
   # Home page
   home:
@@ -146,6 +158,41 @@ en:
       last_active: "Last active"
       member_since: "Member since"
       not_available: "N/A"
+    quizzes:
+      title: "Recent Quizzes"
+      subtitle: "Continue where you left off"
+      empty: "No quizzes available yet. Check back soon!"
+      view_all: "View all quizzes"
+      start_quiz: "Start"
+
+  # Quizzes
+  quizzes:
+    index:
+      title: "Practice Quizzes"
+      subtitle: "Test your knowledge of symmetry with these interactive questions"
+      question_count:
+        one: "%{count} question"
+        other: "%{count} questions"
+      answers_count:
+        one: "%{count} answer"
+        other: "%{count} answers"
+      start: "Start"
+    filters:
+      all: "All"
+    show:
+      all_questions: "All questions"
+      question_number: "Question %{current} of %{total}"
+      select_multiple: "Select all %{count} correct answers"
+      submit_answer: "Submit Answer"
+      previous: "Previous"
+      next: "Next"
+      finish: "Finish"
+    empty:
+      title: "No quizzes yet"
+      description: "Check back later for new quiz questions!"
+    feedback:
+      correct: "Correct!"
+      incorrect: "Incorrect — see the correct answer above"
 
   # Footer
   footer:
@@ -189,3 +236,54 @@ en:
     previous: "Previous"
     search: "Search"
     language: "Language"
+
+  # Admin
+  admin:
+    title: "Admin"
+    access_denied: "Access denied. You must be an administrator."
+    nav:
+      quiz_questions: "Quiz Questions"
+      back_to_app: "Back to App"
+    quiz_questions:
+      created: "Quiz question created successfully."
+      updated: "Quiz question updated successfully."
+      deleted: "Quiz question deleted successfully."
+      delete_confirm: "Are you sure you want to delete this question?"
+      index:
+        title: "Quiz Questions"
+        subtitle: "Manage quiz questions for the symmetry modules"
+      new:
+        title: "New Question"
+      edit:
+        title: "Edit Question"
+      empty:
+        title: "No questions yet"
+        description: "Get started by creating your first quiz question."
+      fields:
+        title: "Title"
+        content: "Content"
+        image: "Image"
+        language: "Language"
+        category: "Category"
+        answers: "Answers"
+        options: "options"
+        created_at: "Created"
+        actions: "Actions"
+      filters:
+        language: "Language:"
+        category: "Category:"
+        all: "All"
+        all_categories: "All categories"
+      form:
+        title_placeholder: "Enter the question title..."
+        content_placeholder: "Enter additional context or explanation (optional)..."
+        image_hint: "PNG, JPG, GIF up to 10MB"
+        no_image: "No image selected"
+        no_category: "No category"
+        answers_hint: "Add answer options and mark the correct one(s)"
+        add_answer: "Add Answer"
+        answer_placeholder: "Answer %{letter}"
+        correct: "Correct"
+        errors:
+          one: "1 error prevented this question from being saved"
+          other: "%{count} errors prevented this question from being saved"

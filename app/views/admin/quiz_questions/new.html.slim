@@ -1,0 +1,14 @@
+- content_for :page_title, t('admin.quiz_questions.new.title')
+
+.mx-auto.max-w-3xl
+  / Breadcrumb
+  nav.mb-6
+    ol.flex.items-center.gap-2.text-sm
+      li
+        = link_to admin_quiz_questions_path, class: "text-zinc-400 hover:text-white" do
+          = t('admin.quiz_questions.index.title')
+      li.text-zinc-600 /
+      li.text-white = t('admin.quiz_questions.new.title')
+
+  = render "form"
+

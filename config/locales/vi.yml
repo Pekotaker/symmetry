@@ -1,4 +1,14 @@
 vi:
+  # ActiveRecord errors
+  activerecord:
+    errors:
+      models:
+        quiz_question:
+          attributes:
+            image:
+              invalid_content_type: "phải là PNG, JPG hoặc GIF"
+              file_too_large: "phải nhỏ hơn 10MB"
+
   # Site-wide
   site:
     name: "Symmetry"
@@ -15,8 +25,10 @@ vi:
     sign_up: "Bắt đầu"
     sign_out: "Đăng xuất"
     dashboard: "Bảng điều khiển"
+    quizzes: "Câu hỏi"
     settings: "Cài đặt"
     account: "Tài khoản"
+    admin: "Quản trị"
 
   # Home page
   home:
@@ -146,6 +158,41 @@ vi:
       last_active: "Hoạt động lần cuối"
       member_since: "Tham gia từ"
       not_available: "N/A"
+    quizzes:
+      title: "Câu hỏi gần đây"
+      subtitle: "Tiếp tục từ nơi bạn dừng lại"
+      empty: "Chưa có câu hỏi nào. Hãy quay lại sau!"
+      view_all: "Xem tất cả"
+      start_quiz: "Bắt đầu"
+
+  # Quizzes
+  quizzes:
+    index:
+      title: "Câu hỏi thực hành"
+      subtitle: "Kiểm tra kiến thức về đối xứng với các câu hỏi tương tác"
+      question_count:
+        one: "%{count} câu hỏi"
+        other: "%{count} câu hỏi"
+      answers_count:
+        one: "%{count} đáp án"
+        other: "%{count} đáp án"
+      start: "Bắt đầu"
+    filters:
+      all: "Tất cả"
+    show:
+      all_questions: "Tất cả câu hỏi"
+      question_number: "Câu %{current} / %{total}"
+      select_multiple: "Chọn tất cả %{count} đáp án đúng"
+      submit_answer: "Gửi đáp án"
+      previous: "Trước"
+      next: "Tiếp"
+      finish: "Hoàn thành"
+    empty:
+      title: "Chưa có câu hỏi"
+      description: "Hãy quay lại sau để xem câu hỏi mới!"
+    feedback:
+      correct: "Chính xác!"
+      incorrect: "Sai — xem đáp án đúng ở trên"
 
   # Footer
   footer:
@@ -190,3 +237,53 @@ vi:
     search: "Tìm kiếm"
     language: "Ngôn ngữ"
 
+  # Admin
+  admin:
+    title: "Quản trị"
+    access_denied: "Truy cập bị từ chối. Bạn phải là quản trị viên."
+    nav:
+      quiz_questions: "Câu hỏi Quiz"
+      back_to_app: "Quay lại ứng dụng"
+    quiz_questions:
+      created: "Câu hỏi quiz đã được tạo thành công."
+      updated: "Câu hỏi quiz đã được cập nhật thành công."
+      deleted: "Câu hỏi quiz đã được xóa thành công."
+      delete_confirm: "Bạn có chắc chắn muốn xóa câu hỏi này?"
+      index:
+        title: "Câu hỏi Quiz"
+        subtitle: "Quản lý câu hỏi quiz cho các module đối xứng"
+      new:
+        title: "Câu hỏi mới"
+      edit:
+        title: "Chỉnh sửa câu hỏi"
+      empty:
+        title: "Chưa có câu hỏi nào"
+        description: "Bắt đầu bằng cách tạo câu hỏi quiz đầu tiên."
+      fields:
+        title: "Tiêu đề"
+        content: "Nội dung"
+        image: "Hình ảnh"
+        language: "Ngôn ngữ"
+        category: "Danh mục"
+        answers: "Đáp án"
+        options: "lựa chọn"
+        created_at: "Ngày tạo"
+        actions: "Thao tác"
+      filters:
+        language: "Ngôn ngữ:"
+        category: "Danh mục:"
+        all: "Tất cả"
+        all_categories: "Tất cả danh mục"
+      form:
+        title_placeholder: "Nhập tiêu đề câu hỏi..."
+        content_placeholder: "Nhập ngữ cảnh hoặc giải thích bổ sung (tùy chọn)..."
+        image_hint: "PNG, JPG, GIF tối đa 10MB"
+        no_image: "Chưa chọn hình ảnh"
+        no_category: "Không có danh mục"
+        answers_hint: "Thêm các lựa chọn đáp án và đánh dấu đáp án đúng"
+        add_answer: "Thêm đáp án"
+        answer_placeholder: "Đáp án %{letter}"
+        correct: "Đúng"
+        errors:
+          one: "1 lỗi ngăn câu hỏi này được lưu"
+          other: "%{count} lỗi ngăn câu hỏi này được lưu"

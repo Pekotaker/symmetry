@@ -1,0 +1,73 @@
+doctype html
+html.h-full lang=I18n.locale
+  head
+    title = "#{t('admin.title')} | #{t('site.name')}"
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name="robots" content="noindex,nofollow"
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    link rel="preconnect" href="https://fonts.googleapis.com"
+    link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""
+    link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet"
+
+    = vite_client_tag
+    = vite_javascript_tag 'application'
+
+  body.h-full.font-sans.antialiased class="bg-zinc-950 text-zinc-100"
+    .flex.h-full
+      / Sidebar
+      aside.fixed.inset-y-0.left-0.z-50.flex.w-64.flex-col.border-r.border-zinc-800.bg-zinc-900
+        / Logo
+        .flex.h-16.items-center.gap-3.border-b.border-zinc-800.px-6
+          .flex.h-9.w-9.items-center.justify-center.rounded-lg.bg-gradient-to-br.from-amber-400.via-orange-500.to-rose-500
+            svg.h-5.w-5.text-white xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+          .flex.flex-col
+            span.text-lg.font-bold.tracking-tight.text-white = t('site.name')
+            span.text-xs.font-medium.text-amber-500 = t('admin.title')
+
+        / Navigation
+        nav.flex-1.space-y-1.overflow-y-auto.px-3.py-4
+          = link_to admin_root_path, class: "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors #{controller_name == 'quiz_questions' ? 'bg-zinc-800 text-white' : 'text-zinc-400 hover:bg-zinc-800 hover:text-white'}" do
+            svg.h-5.w-5 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+            span = t('admin.nav.quiz_questions')
+          
+          .my-4.border-t.border-zinc-800
+          
+          = link_to dashboard_path, class: "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white" do
+            svg.h-5.w-5 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+            span = t('admin.nav.back_to_app')
+
+        / Language switcher
+        .border-t.border-zinc-800.px-4.py-3
+          .flex.items-center.justify-center.gap-2.rounded-lg.bg-zinc-800.p-1
+            - I18n.available_locales.each do |loc|
+              = link_to locale_path(loc), class: "flex-1 rounded-md px-3 py-1.5 text-center text-sm font-medium transition-colors #{I18n.locale == loc ? 'bg-amber-500 text-white' : 'text-zinc-400 hover:text-white'}" do
+                = loc.to_s.upcase
+
+        / User menu
+        .border-t.border-zinc-800.p-4
+          .flex.items-center.gap-3
+            .flex.h-9.w-9.items-center.justify-center.rounded-full.bg-gradient-to-br.from-amber-400.via-orange-500.to-rose-500.text-sm.font-medium.text-white
+              = current_user.email.first.upcase
+            .flex-1.min-w-0
+              p.truncate.text-sm.font-medium.text-white = current_user.email
+            = link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "rounded-lg p-2 text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-zinc-300", title: t('nav.sign_out') do
+              svg.h-5.w-5 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+
+      / Main content
+      .ml-64.flex.flex-1.flex-col
+        / Header
+        header.sticky.top-0.z-40.flex.items-center.gap-4.border-b.border-zinc-800.bg-zinc-900.px-6 class="min-h-[64px]"
+          h1.text-lg.font-semibold.text-white = yield(:page_title) || t('admin.title')
+          .ml-auto.flex.items-center.gap-4
+            = render "shared/flash_inline"
+
+        / Page content
+        main.flex-1.bg-zinc-950.p-6
+          = yield
+

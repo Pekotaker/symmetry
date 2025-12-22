@@ -1,0 +1,62 @@
+- content_for :page_title, @current_category ? @current_category.name : t('quizzes.index.title')
+
+.space-y-6
+  / Header
+  .flex.items-center.justify-between
+    div
+      h2.text-2xl.font-bold.text-white = @current_category ? @current_category.name : t('quizzes.index.title')
+      p.mt-1.text-zinc-400 = @current_category&.description || t('quizzes.index.subtitle')
+    .flex.items-center.gap-2.text-sm.text-zinc-500
+      svg.h-5.w-5 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+      span = t('quizzes.index.question_count', count: @quiz_questions.count)
+
+  / Category filters
+  - if @categories.any?
+    .flex.flex-wrap.gap-2
+      = link_to quizzes_path, class: "rounded-full px-4 py-2 text-sm font-medium transition-colors #{params[:category].blank? ? 'bg-amber-500 text-white' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}" do
+        = t('quizzes.filters.all')
+      - @categories.each do |category|
+        = link_to quizzes_path(category: category.id), class: "rounded-full px-4 py-2 text-sm font-medium transition-colors #{params[:category].to_s == category.id.to_s ? 'bg-amber-500 text-white' : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'}" do
+          = category.name
+
+  - if @quiz_questions.any?
+    .grid.gap-6.sm:grid-cols-2.lg:grid-cols-3
+      - @quiz_questions.each_with_index do |question, index|
+        = link_to quiz_path(question), class: "group relative rounded-2xl border border-zinc-800 bg-zinc-900 overflow-hidden transition-all hover:border-amber-500/50 hover:shadow-lg hover:shadow-amber-500/10 hover:-translate-y-1" do
+          / Question number badge
+          .absolute.top-4.left-4.z-10.flex.h-8.w-8.items-center.justify-center.rounded-lg.bg-zinc-800.text-sm.font-bold.text-zinc-400.transition-colors.group-hover:bg-amber-500.group-hover:text-white
+            = index + 1
+
+          / Image
+          - if question.image.attached?
+            .aspect-video.overflow-hidden.bg-zinc-800
+              = image_tag question.image.variant(resize_to_limit: [400, 300]), class: "h-full w-full object-cover transition-transform group-hover:scale-105"
+          - else
+            .aspect-video.flex.items-center.justify-center.bg-gradient-to-br.from-zinc-800.to-zinc-900
+              svg.h-12.w-12.text-zinc-700 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"
+                path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+
+          / Content
+          .p-5
+            - if question.quiz_category && params[:category].blank?
+              span.inline-block.mb-2.rounded-full.bg-zinc-800.px-2.py-0.5.text-xs.text-zinc-400 = question.quiz_category.name
+            h3.font-semibold.text-white.leading-snug.line-clamp-2.group-hover:text-amber-400.transition-colors = question.title
+            - if question.content.present?
+              p.mt-2.text-sm.text-zinc-500.line-clamp-2 = question.content
+
+            .mt-4.flex.items-center.justify-between
+              span.text-xs.text-zinc-500 = t('quizzes.index.answers_count', count: question.answers.count)
+              .flex.items-center.gap-1.text-amber-500
+                span.text-sm.font-medium = t('quizzes.index.start')
+                svg.h-4.w-4.transition-transform.group-hover:translate-x-1 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                  path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+
+  - else
+    .rounded-2xl.border.border-dashed.border-zinc-700.bg-zinc-900/50.p-16.text-center
+      .mx-auto.flex.h-16.w-16.items-center.justify-center.rounded-full.bg-zinc-800
+        svg.h-8.w-8.text-zinc-500 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
+      h3.mt-4.font-semibold.text-white = t('quizzes.empty.title')
+      p.mt-2.text-sm.text-zinc-400 = t('quizzes.empty.description')
+

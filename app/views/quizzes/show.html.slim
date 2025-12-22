@@ -1,0 +1,67 @@
+- content_for :page_title, @quiz_question.title
+
+.mx-auto.max-w-3xl.space-y-6
+  / Navigation header
+  .flex.items-center.justify-between
+    = link_to quizzes_path, class: "inline-flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800 px-4 py-2 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white" do
+      svg.h-4.w-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+        path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
+      = t('quizzes.show.all_questions')
+
+    .flex.items-center.gap-2.text-sm.text-zinc-500
+      span = t('quizzes.show.question_number', current: @current_index + 1, total: @quiz_questions.count)
+
+  / Question card
+  .rounded-2xl.border.border-zinc-800.bg-zinc-900.overflow-hidden data-controller="quiz" data-quiz-correct-indices-value=@quiz_question.correct_answer_index.to_json
+    / Image
+    - if @quiz_question.image.attached?
+      .aspect-video.overflow-hidden.bg-zinc-800
+        = image_tag @quiz_question.image.variant(resize_to_limit: [800, 600]), class: "h-full w-full object-contain bg-zinc-950"
+
+    / Question content
+    .p-6.space-y-6
+      div
+        h1.text-xl.font-bold.text-white = @quiz_question.title
+        - if @quiz_question.content.present?
+          p.mt-3.text-zinc-400.leading-relaxed = @quiz_question.content
+        - if @quiz_question.correct_answer_index.length > 1
+          p.mt-2.text-sm.text-amber-500
+            = t('quizzes.show.select_multiple', count: @quiz_question.correct_answer_index.length)
+
+      / Answer options
+      .space-y-3
+        - @quiz_question.answers.each_with_index do |answer, index|
+          button.w-full.flex.items-center.gap-4.rounded-xl.border.border-zinc-700.bg-zinc-800/50.px-5.py-4.text-left.transition-all.hover:border-amber-500/50.hover:bg-amber-500/10 type="button" data-quiz-target="answer" data-index=index data-action="click->quiz#toggleAnswer"
+            .flex.h-10.w-10.shrink-0.items-center.justify-center.rounded-xl.border.border-zinc-600.bg-zinc-700.text-sm.font-bold.text-zinc-300
+              = ('A'.ord + index).chr
+            span.text-zinc-200.text-base = answer
+
+      / Submit button
+      .pt-4
+        button.w-full.rounded-xl.bg-gradient-to-r.from-amber-500.to-orange-500.px-6.py-3.5.text-sm.font-semibold.text-white.shadow-lg.shadow-orange-500/25.transition-all.hover:shadow-xl.hover:shadow-orange-500/30.opacity-50.cursor-not-allowed type="button" disabled=true data-quiz-target="submitButton" data-action="click->quiz#submit"
+          = t('quizzes.show.submit_answer')
+
+      / Feedback area
+      .pt-4.border-t.border-zinc-800.hidden data-quiz-target="feedback"
+
+  / Navigation buttons
+  .flex.items-center.justify-between
+    - if @prev_question
+      = link_to quiz_path(@prev_question), class: "inline-flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800 px-5 py-2.5 text-sm font-medium text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white" do
+        svg.h-4.w-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+        = t('quizzes.show.previous')
+    - else
+      .w-1
+
+    - if @next_question
+      = link_to quiz_path(@next_question), class: "inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-orange-500/25 transition-all hover:shadow-xl hover:shadow-orange-500/30" do
+        = t('quizzes.show.next')
+        svg.h-4.w-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+    - else
+      = link_to quizzes_path, class: "inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition-all hover:shadow-xl hover:shadow-emerald-500/30" do
+        = t('quizzes.show.finish')
+        svg.h-4.w-4 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+

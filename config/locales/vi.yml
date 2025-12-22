@@ -1,0 +1,192 @@
+vi:
+  # Site-wide
+  site:
+    name: "Symmetry"
+    tagline: "Khám phá vẻ đẹp của đối xứng toán học"
+    description: "Học về đối xứng từ khái niệm cơ bản đến lý thuyết nhóm nâng cao"
+
+  # Navigation
+  nav:
+    home: "Trang chủ"
+    lessons: "Bài học"
+    practice: "Thực hành"
+    about: "Giới thiệu"
+    sign_in: "Đăng nhập"
+    sign_up: "Bắt đầu"
+    sign_out: "Đăng xuất"
+    dashboard: "Bảng điều khiển"
+    settings: "Cài đặt"
+    account: "Tài khoản"
+
+  # Home page
+  home:
+    hero:
+      badge: "Từ cơ bản đến nâng cao"
+      title_1: "Khám phá vẻ đẹp của"
+      title_2: "Đối xứng"
+      subtitle: "Từ phép phản chiếu và phép quay đến lý thuyết nhóm — khám phá toán học định hình thế giới của chúng ta. Phù hợp cho học sinh ở mọi trình độ."
+      cta_primary: "Bắt đầu học"
+      cta_secondary: "Khám phá chủ đề"
+    
+    symmetry_types:
+      reflection: "Phản chiếu"
+      rotation: "Quay"
+      translation: "Tịnh tiến"
+      point: "Tâm"
+    
+    features:
+      title: "Bạn sẽ học gì"
+      subtitle: "Hành trình có cấu trúc qua thế giới đối xứng"
+      
+      elementary:
+        title: "Đối xứng Cơ bản"
+        description: "Bắt đầu với phép phản chiếu, phép quay và các mẫu hình cơ bản. Hoàn hảo cho người mới bắt đầu khám phá đối xứng trong các vật thể hàng ngày."
+      
+      geometric:
+        title: "Phép biến đổi Hình học"
+        description: "Khám phá phép tịnh tiến, phép quay, phép phản chiếu và phép trượt phản chiếu. Hiểu cách các hình biến đổi trên mặt phẳng."
+      
+      group_theory:
+        title: "Lý thuyết Nhóm"
+        description: "Đi sâu vào đại số trừu tượng đằng sau đối xứng. Tìm hiểu về nhóm, nhóm con và các phép toán đối xứng."
+    
+    levels:
+      title: "Lộ trình học tập"
+      subtitle: "Chọn điểm bắt đầu của bạn"
+      
+      beginner:
+        title: "Người mới"
+        description: "Mới làm quen với đối xứng? Bắt đầu tại đây với các hoạt động trực quan và thực hành."
+        cta: "Bắt đầu hành trình"
+      
+      intermediate:
+        title: "Trung cấp"
+        description: "Sẵn sàng cho nhiều hơn? Khám phá các phép biến đổi và tính chất của chúng."
+        cta: "Tiếp tục học"
+      
+      advanced:
+        title: "Nâng cao"
+        description: "Đi sâu vào lý thuyết nhóm và đại số trừu tượng."
+        cta: "Sắp ra mắt"
+
+  # Auth pages
+  auth:
+    sign_in:
+      title: "Chào mừng trở lại"
+      subtitle: "Đăng nhập để tiếp tục hành trình học tập"
+      email: "Email"
+      password: "Mật khẩu"
+      remember_me: "Ghi nhớ đăng nhập"
+      forgot_password: "Quên mật khẩu?"
+      submit: "Đăng nhập"
+      no_account: "Mới đến Symmetry?"
+      sign_up_link: "Tạo tài khoản"
+    
+    sign_up:
+      title: "Bắt đầu hành trình"
+      subtitle: "Tạo tài khoản để theo dõi tiến độ của bạn"
+      email: "Email"
+      password: "Mật khẩu"
+      password_confirmation: "Xác nhận mật khẩu"
+      submit: "Tạo tài khoản"
+      has_account: "Đã có tài khoản?"
+      sign_in_link: "Đăng nhập"
+    
+    forgot_password:
+      title: "Đặt lại mật khẩu"
+      subtitle: "Nhập email của bạn và chúng tôi sẽ gửi hướng dẫn đặt lại"
+      email: "Email"
+      submit: "Gửi liên kết đặt lại"
+      back_to_sign_in: "Quay lại đăng nhập"
+    
+    reset_password:
+      title: "Đặt mật khẩu mới"
+      subtitle: "Chọn mật khẩu mạnh cho tài khoản của bạn"
+      password: "Mật khẩu mới"
+      password_confirmation: "Xác nhận mật khẩu mới"
+      submit: "Cập nhật mật khẩu"
+    
+    resend_confirmation:
+      title: "Gửi lại email xác nhận"
+      subtitle: "Nhập địa chỉ email của bạn và chúng tôi sẽ gửi liên kết xác nhận mới."
+      submit: "Gửi lại xác nhận"
+      already_confirmed: "Đã xác nhận?"
+      sign_in_link: "Đăng nhập"
+    
+    edit_profile:
+      page_title: "Cài đặt tài khoản"
+      profile: "Hồ sơ"
+      profile_subtitle: "Cập nhật thông tin cá nhân của bạn."
+      first_name: "Tên"
+      last_name: "Họ"
+      waiting_confirmation: "Đang chờ xác nhận cho: %{email}"
+      change_password: "Đổi mật khẩu"
+      change_password_hint: "Để trống nếu bạn không muốn thay đổi."
+      new_password: "Mật khẩu mới"
+      minimum_characters: "Tối thiểu %{count} ký tự"
+      current_password: "Mật khẩu hiện tại"
+      current_password_hint: "Bắt buộc để xác nhận thay đổi"
+      update_profile: "Cập nhật hồ sơ"
+      danger_zone: "Vùng nguy hiểm"
+      danger_zone_warning: "Sau khi xóa tài khoản, bạn không thể khôi phục lại."
+      delete_account: "Xóa tài khoản"
+      delete_confirmation: "Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác."
+
+  # Dashboard
+  dashboard:
+    title: "Bảng điều khiển"
+    welcome: "Chào mừng trở lại, %{name}!"
+    continue_learning: "Tiếp tục học"
+    your_progress: "Tiến độ của bạn"
+    quick_actions: "Thao tác nhanh"
+    recent_activity: "Hoạt động gần đây"
+    stats:
+      lessons_completed: "Bài học hoàn thành"
+      sign_ins: "Lần đăng nhập"
+      last_active: "Hoạt động lần cuối"
+      member_since: "Tham gia từ"
+      not_available: "N/A"
+
+  # Footer
+  footer:
+    copyright: "© %{year} Symmetry. Bảo lưu mọi quyền."
+    tagline: "Làm cho toán học trở nên đẹp đẽ"
+
+  # Mailer
+  mailer:
+    greeting: "Xin chào %{name}!"
+    confirmation:
+      subject: "Xác nhận email của bạn"
+      body: "Cảm ơn bạn đã đăng ký Symmetry. Vui lòng xác nhận địa chỉ email bằng cách nhấp vào nút bên dưới."
+      action: "Xác nhận email"
+      ignore: "Nếu bạn không tạo tài khoản, bạn có thể bỏ qua email này."
+    reset_password:
+      subject: "Đặt lại mật khẩu"
+      body: "Ai đó đã yêu cầu đặt lại mật khẩu cho tài khoản Symmetry của bạn. Nếu đó là bạn, hãy nhấp vào nút bên dưới để đặt mật khẩu mới."
+      action: "Đặt lại mật khẩu"
+      ignore: "Nếu bạn không yêu cầu đặt lại mật khẩu, bạn có thể bỏ qua email này. Mật khẩu của bạn sẽ không thay đổi."
+      expiry: "Liên kết này sẽ hết hạn sau %{hours} giờ."
+    email_changed:
+      subject: "Địa chỉ email đã thay đổi"
+      body_pending: "Chúng tôi thông báo rằng email của bạn đang được thay đổi thành %{email}."
+      body_changed: "Chúng tôi thông báo rằng email của bạn đã được thay đổi thành %{email}."
+      warning: "Nếu bạn không thực hiện thay đổi này, vui lòng liên hệ hỗ trợ ngay lập tức."
+    password_changed:
+      subject: "Mật khẩu đã thay đổi"
+      body: "Chúng tôi thông báo rằng mật khẩu của bạn đã được thay đổi."
+      warning: "Nếu bạn không thực hiện thay đổi này, vui lòng liên hệ hỗ trợ ngay lập tức và đặt lại mật khẩu."
+
+  # Common
+  common:
+    loading: "Đang tải..."
+    error: "Đã xảy ra lỗi"
+    save: "Lưu"
+    cancel: "Hủy"
+    delete: "Xóa"
+    edit: "Chỉnh sửa"
+    back: "Quay lại"
+    next: "Tiếp theo"
+    previous: "Trước đó"
+    search: "Tìm kiếm"
+    language: "Ngôn ngữ"
+

@@ -1,0 +1,11 @@
+h1 = t('mailer.email_changed.subject')
+
+p = t('mailer.greeting', name: @resource.first_name.presence || @resource.email)
+
+- if @resource.try(:unconfirmed_email?)
+  p = t('mailer.email_changed.body_pending', email: @resource.unconfirmed_email)
+- else
+  p = t('mailer.email_changed.body_changed', email: @resource.email)
+
+p style="font-size: 14px; color: #71717a;"
+  = t('mailer.email_changed.warning')

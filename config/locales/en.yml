@@ -1,0 +1,191 @@
+en:
+  # Site-wide
+  site:
+    name: "Symmetry"
+    tagline: "Discover the beauty of mathematical symmetry"
+    description: "Learn about symmetries from elementary concepts to advanced group theory"
+
+  # Navigation
+  nav:
+    home: "Home"
+    lessons: "Lessons"
+    practice: "Practice"
+    about: "About"
+    sign_in: "Sign in"
+    sign_up: "Get started"
+    sign_out: "Sign out"
+    dashboard: "Dashboard"
+    settings: "Settings"
+    account: "Account"
+
+  # Home page
+  home:
+    hero:
+      badge: "Elementary to Advanced"
+      title_1: "Discover the beauty of"
+      title_2: "Symmetry"
+      subtitle: "From reflections and rotations to group theory — explore the mathematics that shapes our world. Perfect for students at every level."
+      cta_primary: "Start learning"
+      cta_secondary: "Explore topics"
+    
+    symmetry_types:
+      reflection: "Reflection"
+      rotation: "Rotation"
+      translation: "Translation"
+      point: "Point"
+    
+    features:
+      title: "What you'll learn"
+      subtitle: "A structured journey through the world of symmetry"
+      
+      elementary:
+        title: "Elementary Symmetry"
+        description: "Start with reflections, rotations, and basic patterns. Perfect for beginners discovering symmetry in everyday objects."
+      
+      geometric:
+        title: "Geometric Transformations"
+        description: "Explore translations, rotations, reflections, and glide reflections. Understand how shapes transform in the plane."
+      
+      group_theory:
+        title: "Group Theory"
+        description: "Dive into the abstract algebra behind symmetry. Learn about groups, subgroups, and symmetry operations."
+    
+    levels:
+      title: "Learning paths"
+      subtitle: "Choose your starting point"
+      
+      beginner:
+        title: "Beginner"
+        description: "New to symmetry? Start here with visual explorations and hands-on activities."
+        cta: "Begin journey"
+      
+      intermediate:
+        title: "Intermediate"
+        description: "Ready for more? Explore transformations and their properties."
+        cta: "Continue learning"
+      
+      advanced:
+        title: "Advanced"
+        description: "Dive deep into group theory and abstract algebra."
+        cta: "Coming soon"
+
+  # Auth pages
+  auth:
+    sign_in:
+      title: "Welcome back"
+      subtitle: "Sign in to continue your learning journey"
+      email: "Email"
+      password: "Password"
+      remember_me: "Remember me"
+      forgot_password: "Forgot password?"
+      submit: "Sign in"
+      no_account: "New to Symmetry?"
+      sign_up_link: "Create an account"
+    
+    sign_up:
+      title: "Start your journey"
+      subtitle: "Create an account to track your progress"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Confirm password"
+      submit: "Create account"
+      has_account: "Already have an account?"
+      sign_in_link: "Sign in"
+    
+    forgot_password:
+      title: "Reset your password"
+      subtitle: "Enter your email and we'll send you reset instructions"
+      email: "Email"
+      submit: "Send reset link"
+      back_to_sign_in: "Back to sign in"
+    
+    reset_password:
+      title: "Set new password"
+      subtitle: "Choose a strong password for your account"
+      password: "New password"
+      password_confirmation: "Confirm new password"
+      submit: "Update password"
+    
+    resend_confirmation:
+      title: "Resend confirmation email"
+      subtitle: "Enter your email address and we'll send you a new confirmation link."
+      submit: "Resend confirmation"
+      already_confirmed: "Already confirmed?"
+      sign_in_link: "Sign in"
+    
+    edit_profile:
+      page_title: "Account Settings"
+      profile: "Profile"
+      profile_subtitle: "Update your personal information."
+      first_name: "First name"
+      last_name: "Last name"
+      waiting_confirmation: "Waiting confirmation for: %{email}"
+      change_password: "Change password"
+      change_password_hint: "Leave blank if you don't want to change it."
+      new_password: "New password"
+      minimum_characters: "Minimum %{count} characters"
+      current_password: "Current password"
+      current_password_hint: "Required to confirm changes"
+      update_profile: "Update profile"
+      danger_zone: "Danger zone"
+      danger_zone_warning: "Once you delete your account, there is no going back."
+      delete_account: "Delete my account"
+      delete_confirmation: "Are you sure you want to delete your account? This cannot be undone."
+
+  # Dashboard
+  dashboard:
+    title: "Dashboard"
+    welcome: "Welcome back, %{name}!"
+    continue_learning: "Continue learning"
+    your_progress: "Your progress"
+    quick_actions: "Quick actions"
+    recent_activity: "Recent activity"
+    stats:
+      lessons_completed: "Lessons completed"
+      sign_ins: "Sign ins"
+      last_active: "Last active"
+      member_since: "Member since"
+      not_available: "N/A"
+
+  # Footer
+  footer:
+    copyright: "© %{year} Symmetry. All rights reserved."
+    tagline: "Making mathematics beautiful"
+
+  # Mailer
+  mailer:
+    greeting: "Hi %{name}!"
+    confirmation:
+      subject: "Confirm your email"
+      body: "Thanks for signing up for Symmetry. Please confirm your email address by clicking the button below."
+      action: "Confirm my email"
+      ignore: "If you didn't create an account, you can safely ignore this email."
+    reset_password:
+      subject: "Reset your password"
+      body: "Someone requested a password reset for your Symmetry account. If this was you, click the button below to set a new password."
+      action: "Reset my password"
+      ignore: "If you didn't request a password reset, you can safely ignore this email. Your password will remain unchanged."
+      expiry: "This link will expire in %{hours} hours."
+    email_changed:
+      subject: "Email address changed"
+      body_pending: "We're contacting you to notify you that your email is being changed to %{email}."
+      body_changed: "We're contacting you to notify you that your email has been changed to %{email}."
+      warning: "If you didn't make this change, please contact support immediately."
+    password_changed:
+      subject: "Password changed"
+      body: "We're contacting you to notify you that your password has been changed."
+      warning: "If you didn't make this change, please contact support immediately and reset your password."
+
+  # Common
+  common:
+    loading: "Loading..."
+    error: "An error occurred"
+    save: "Save"
+    cancel: "Cancel"
+    delete: "Delete"
+    edit: "Edit"
+    back: "Back"
+    next: "Next"
+    previous: "Previous"
+    search: "Search"
+    language: "Language"

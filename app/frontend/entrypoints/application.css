@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@source "../../views/**/*.slim";
+@source "../../views/**/*.html.erb";
+
+@theme {
+  --font-sans: "DM Sans", system-ui, sans-serif;
+}
+

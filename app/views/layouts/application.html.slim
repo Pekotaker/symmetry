@@ -1,0 +1,21 @@
+doctype html
+html.h-full lang=I18n.locale
+  head
+    title = t('site.name')
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    meta name="description" content=t('site.description')
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    link rel="preconnect" href="https://fonts.googleapis.com"
+    link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""
+    link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet"
+
+    = vite_client_tag
+    = vite_javascript_tag 'application'
+
+  body.h-full.font-sans.antialiased class="bg-zinc-950 text-zinc-100"
+    - if user_signed_in?
+      = render "layouts/app_shell"
+    - else
+      = yield

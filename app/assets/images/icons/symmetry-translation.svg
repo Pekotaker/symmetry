@@ -1,0 +1,10 @@
+<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Repeated shapes showing translation -->
+  <rect x="4" y="16" width="8" height="8" fill="currentColor" opacity="0.4"/>
+  <rect x="16" y="16" width="8" height="8" fill="currentColor" opacity="0.6"/>
+  <rect x="28" y="16" width="8" height="8" fill="currentColor" opacity="0.8"/>
+  <!-- Arrow showing direction -->
+  <line x1="8" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1"/>
+  <polyline points="28,25 32,28 28,31" fill="none" stroke="currentColor" stroke-width="1"/>
+</svg>
+

@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+    style type="text/css"
+      | body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.5; color: #18181b; background-color: #f4f4f5; margin: 0; padding: 0; }
+      | .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+      | .card { background-color: #ffffff; border-radius: 16px; padding: 32px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+      | .logo { text-align: center; margin-bottom: 24px; }
+      | .logo-icon { display: inline-block; width: 40px; height: 40px; background: linear-gradient(135deg, #8b5cf6, #d946ef); border-radius: 10px; }
+      | h1 { font-size: 20px; font-weight: 600; margin: 0 0 16px; }
+      | p { margin: 0 0 16px; color: #52525b; }
+      | .button { display: inline-block; background: linear-gradient(135deg, #8b5cf6, #d946ef); color: #ffffff !important; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; }
+      | .footer { text-align: center; margin-top: 32px; font-size: 12px; color: #a1a1aa; }
+  body
+    .container
+      .card
+        .logo
+          .logo-icon
+        = yield
+      .footer
+        p © #{Time.current.year} Symmetry. All rights reserved.
+

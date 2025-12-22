@@ -1,0 +1,4 @@
+- flash.each do |type, message|
+  - bg_class = { notice: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400", success: "bg-emerald-500/10 border-emerald-500/20 text-emerald-400", alert: "bg-red-500/10 border-red-500/20 text-red-400", error: "bg-red-500/10 border-red-500/20 text-red-400" }.fetch(type.to_sym, "bg-zinc-500/10 border-zinc-500/20 text-zinc-400")
+  .mb-4.rounded-lg.border.px-4.py-3.text-sm class=bg_class
+    = message

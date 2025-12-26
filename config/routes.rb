@@ -39,6 +39,9 @@ Rails.application.routes.draw do
   # Reflectional Symmetry Puzzles
   resources :reflectional_symmetry_puzzles, only: [:index, :show], path: "puzzles/reflection"
 
+  # Showcases
+  resources :showcases, only: [:index, :show]
+
   # API (AJAX endpoints)
   namespace :api do
     get "quiz_feedback", to: "quiz_feedback#show"
@@ -51,5 +54,6 @@ Rails.application.routes.draw do
     root "quiz_questions#index"
     resources :quiz_questions
     resources :reflectional_symmetry_puzzles, path: "puzzles/reflection"
+    resources :showcases
   end
 end

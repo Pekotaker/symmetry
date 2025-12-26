@@ -4,6 +4,7 @@ en:
     models:
       reflectional_symmetry_puzzle: "Reflection Puzzle"
       reflectional_symmetry_puzzle_entry: "Puzzle Entry"
+      showcase: "Showcase"
     errors:
       models:
         quiz_question:
@@ -41,6 +42,7 @@ en:
     quizzes: "Quizzes"
     puzzles: "Puzzles"
     reflection_puzzles: "Reflection"
+    showcases: "Showcase"
     settings: "Settings"
     account: "Account"
     admin: "Admin Panel"
@@ -253,6 +255,22 @@ en:
     language: "Language"
     view_all: "View all"
 
+  # Showcases
+  showcases:
+    index:
+      title: "Showcase"
+      subtitle: "Explore beautiful examples of symmetry in nature and art"
+      view: "View"
+    show:
+      all_showcases: "All showcases"
+      no_content: "No content available"
+    symmetry_types:
+      reflectional: "Reflectional"
+      point: "Point"
+    empty:
+      title: "No showcases yet"
+      description: "Check back later for new showcases!"
+
   # Reflectional Symmetry Puzzles
   reflectional_symmetry_puzzles:
     index:
@@ -286,6 +304,7 @@ en:
     nav:
       quiz_questions: "Quiz Questions"
       reflectional_symmetry_puzzles: "Reflection Puzzles"
+      showcases: "Showcases"
       back_to_app: "Back to App"
     quiz_questions:
       created: "Quiz question created successfully."
@@ -374,3 +393,33 @@ en:
       trivia: "Trivia"
       trivia_hint: "Save the entry first to add rich text trivia"
       no_entries: "No entries yet. Add some image pairs to this puzzle."
+    showcases:
+      created: "Showcase created successfully."
+      updated: "Showcase updated successfully."
+      deleted: "Showcase deleted successfully."
+      delete_confirm: "Are you sure you want to delete this showcase?"
+      index:
+        title: "Showcases"
+        subtitle: "Manage showcase items"
+      new:
+        title: "New Showcase"
+      edit:
+        title: "Edit Showcase"
+      empty:
+        title: "No showcases yet"
+        description: "Get started by creating your first showcase."
+      fields:
+        title: "Title"
+        content: "Content"
+        image: "Image"
+        symmetry_type: "Symmetry Type"
+      symmetry_types:
+        reflectional: "Reflectional"
+        point: "Point"
+      form:
+        title_placeholder: "Enter the showcase title..."
+        image_hint: "PNG, JPG, GIF up to 10MB"
+        no_image: "No image selected"
+        errors:
+          one: "1 error prevented this showcase from being saved"
+          other: "%{count} errors prevented this showcase from being saved"

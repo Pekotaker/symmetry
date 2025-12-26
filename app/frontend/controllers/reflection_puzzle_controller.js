@@ -8,7 +8,8 @@ export default class extends Controller {
     "leftCanvasImage", "rightCanvasImage",
     "leftPlaceholder", "rightPlaceholder",
     "canvas", "feedback", "feedbackIcon",
-    "score", "remaining"
+    "score", "remaining",
+    "glowLine", "triviaModal", "triviaContent"
   ]
   static values = { entries: Array }
 
@@ -17,6 +18,7 @@ export default class extends Controller {
     this.selectedRightEntryId = null
     this.matchedEntryIds = new Set()
     this.score = 0
+    this.pendingTrivia = null
   }
 
   selectLeftImage(event) {
@@ -86,11 +88,13 @@ export default class extends Controller {
   }
 
   handleCorrectMatch() {
-    // Show success feedback
+    // Show success feedback with glow
     this.showFeedback(true)
+    this.showGlowEffect()
 
     // Mark entry as matched
-    this.matchedEntryIds.add(this.selectedLeftEntryId)
+    const entryId = this.selectedLeftEntryId
+    this.matchedEntryIds.add(entryId)
 
     // Update score
     this.score++
@@ -98,7 +102,6 @@ export default class extends Controller {
     this.remainingTarget.textContent = this.entriesValue.length - this.score
 
     // Disable matched images
-    const entryId = this.selectedLeftEntryId
     this.leftImageTargets.forEach(img => {
       if (parseInt(img.dataset.entryId) === entryId) {
         img.classList.add("opacity-30", "pointer-events-none")
@@ -114,10 +117,21 @@ export default class extends Controller {
       }
     })
 
-    // Reset selection after a delay
+    // Find the trivia for this entry
+    const entry = this.entriesValue.find(e => e.id === entryId)
+    
+    // Show trivia popup after a short delay for feedback
     setTimeout(() => {
-      this.resetSelection()
-    }, 1500)
+      this.hideFeedback()
+      this.hideGlowEffect()
+      
+      if (entry && entry.trivia) {
+        this.showTrivia(entry.trivia)
+      } else {
+        // No trivia, just reset
+        this.resetSelection()
+      }
+    }, 800)
   }
 
   handleIncorrectMatch() {
@@ -126,47 +140,98 @@ export default class extends Controller {
 
     // Reset selection after a delay
     setTimeout(() => {
+      this.hideFeedback()
       this.resetSelection()
-    }, 1500)
+    }, 1200)
+  }
+
+  showGlowEffect() {
+    if (this.hasGlowLineTarget) {
+      this.glowLineTarget.classList.remove("opacity-0")
+      this.glowLineTarget.classList.add("opacity-100")
+    }
+  }
+
+  hideGlowEffect() {
+    if (this.hasGlowLineTarget) {
+      this.glowLineTarget.classList.remove("opacity-100")
+      this.glowLineTarget.classList.add("opacity-0")
+    }
+  }
+
+  showTrivia(triviaHtml) {
+    if (this.hasTriviaModalTarget && this.hasTriviaContentTarget) {
+      this.triviaContentTarget.innerHTML = triviaHtml
+      this.triviaModalTarget.classList.remove("hidden")
+    }
+  }
+
+  closeTrivia() {
+    if (this.hasTriviaModalTarget) {
+      this.triviaModalTarget.classList.add("hidden")
+      this.triviaContentTarget.innerHTML = ""
+    }
+    this.resetSelection()
   }
 
   showFeedback(isCorrect) {
     // Update canvas border
     if (isCorrect) {
-      this.canvasTarget.classList.add("border-emerald-500", "shadow-emerald-500/20", "shadow-xl")
-      this.feedbackIconTarget.textContent = "✓"
-      this.feedbackIconTarget.classList.add("text-emerald-500")
-      this.feedbackIconTarget.classList.remove("text-red-500")
-      this.leftCanvasTarget.classList.add("bg-emerald-500/10")
-      this.rightCanvasTarget.classList.add("bg-emerald-500/10")
+      if (this.hasCanvasTarget) {
+        this.canvasTarget.classList.add("border-emerald-500", "shadow-emerald-500/20", "shadow-xl")
+      }
+      if (this.hasFeedbackIconTarget) {
+        this.feedbackIconTarget.textContent = "✓"
+        this.feedbackIconTarget.classList.add("text-emerald-500")
+        this.feedbackIconTarget.classList.remove("text-red-500")
+      }
+      if (this.hasLeftCanvasTarget) {
+        this.leftCanvasTarget.classList.add("bg-emerald-500/10")
+      }
+      if (this.hasRightCanvasTarget) {
+        this.rightCanvasTarget.classList.add("bg-emerald-500/10")
+      }
     } else {
-      this.canvasTarget.classList.add("border-red-500", "shadow-red-500/20", "shadow-xl")
-      this.feedbackIconTarget.textContent = "✗"
-      this.feedbackIconTarget.classList.add("text-red-500")
-      this.feedbackIconTarget.classList.remove("text-emerald-500")
-      this.leftCanvasTarget.classList.add("bg-red-500/10")
-      this.rightCanvasTarget.classList.add("bg-red-500/10")
+      if (this.hasCanvasTarget) {
+        this.canvasTarget.classList.add("border-red-500", "shadow-red-500/20", "shadow-xl")
+      }
+      if (this.hasFeedbackIconTarget) {
+        this.feedbackIconTarget.textContent = "✗"
+        this.feedbackIconTarget.classList.add("text-red-500")
+        this.feedbackIconTarget.classList.remove("text-emerald-500")
+      }
+      if (this.hasLeftCanvasTarget) {
+        this.leftCanvasTarget.classList.add("bg-red-500/10")
+      }
+      if (this.hasRightCanvasTarget) {
+        this.rightCanvasTarget.classList.add("bg-red-500/10")
+      }
     }
 
-    this.feedbackTarget.classList.remove("opacity-0")
-    this.feedbackTarget.classList.add("opacity-100")
-
-    // Hide feedback after delay
-    setTimeout(() => {
-      this.hideFeedback()
-    }, 1200)
+    if (this.hasFeedbackTarget) {
+      this.feedbackTarget.classList.remove("opacity-0")
+      this.feedbackTarget.classList.add("opacity-100")
+    }
   }
 
   hideFeedback() {
-    this.canvasTarget.classList.remove(
-      "border-emerald-500", "shadow-emerald-500/20",
-      "border-red-500", "shadow-red-500/20",
-      "shadow-xl"
-    )
-    this.feedbackTarget.classList.remove("opacity-100")
-    this.feedbackTarget.classList.add("opacity-0")
-    this.leftCanvasTarget.classList.remove("bg-emerald-500/10", "bg-red-500/10")
-    this.rightCanvasTarget.classList.remove("bg-emerald-500/10", "bg-red-500/10")
+    if (this.hasCanvasTarget) {
+      this.canvasTarget.classList.remove(
+        "border-emerald-500", "shadow-emerald-500/20",
+        "border-red-500", "shadow-red-500/20",
+        "shadow-xl"
+      )
+    }
+    if (this.hasFeedbackTarget) {
+      this.feedbackTarget.classList.remove("opacity-100")
+      this.feedbackTarget.classList.add("opacity-0")
+    }
+    if (this.hasLeftCanvasTarget) {
+      this.leftCanvasTarget.classList.remove("bg-emerald-500/10", "bg-red-500/10")
+    }
+    if (this.hasRightCanvasTarget) {
+      this.rightCanvasTarget.classList.remove("bg-emerald-500/10", "bg-red-500/10")
+    }
   }
 
   resetSelection() {

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["answer", "feedback", "submitButton"]
+  static targets = ["answer", "feedback", "submitButton", "questionImage", "correctImage"]
   static values = { 
     correctIndices: Array,
     submitted: { type: Boolean, default: false },
@@ -86,6 +86,15 @@ export default class extends Controller {
   
   showFeedback(isCorrect) {
     if (!this.hasFeedbackTarget) return
+    
+    // If correct and we have a correct answer image, swap the images
+    if (isCorrect && this.hasCorrectImageTarget) {
+      if (this.hasQuestionImageTarget) {
+        this.questionImageTarget.classList.add("opacity-0")
+      }
+      this.correctImageTarget.classList.remove("opacity-0")
+      this.correctImageTarget.classList.add("opacity-100")
+    }
     
     fetch(`${this.feedbackUrlValue}?correct=${isCorrect}`, {
       headers: {

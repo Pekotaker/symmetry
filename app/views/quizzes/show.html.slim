@@ -13,10 +13,13 @@
 
   / Question card
   .rounded-2xl.border.border-zinc-800.bg-zinc-900.overflow-hidden data-controller="quiz" data-quiz-correct-indices-value=@quiz_question.correct_answer_index.to_json
-    / Image
-    - if @quiz_question.image.attached?
-      .aspect-video.overflow-hidden.bg-zinc-800
-        = image_tag @quiz_question.image.variant(resize_to_limit: [800, 600]), class: "h-full w-full object-contain bg-zinc-950"
+    / Image container with question and correct answer images
+    - if @quiz_question.image.attached? || @quiz_question.correct_answer_image.attached?
+      .aspect-video.overflow-hidden.bg-zinc-800.relative
+        - if @quiz_question.image.attached?
+          = image_tag @quiz_question.image.variant(resize_to_limit: [800, 600]), class: "h-full w-full object-contain bg-zinc-950 transition-opacity duration-500", data: { quiz_target: "questionImage" }
+        - if @quiz_question.correct_answer_image.attached?
+          = image_tag @quiz_question.correct_answer_image.variant(resize_to_limit: [800, 600]), class: "h-full w-full object-contain bg-zinc-950 absolute inset-0 opacity-0 transition-opacity duration-500", data: { quiz_target: "correctImage" }
 
     / Question content
     .p-6.space-y-6

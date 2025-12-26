@@ -63,7 +63,7 @@ module Admin
     def puzzle_params
       params.require(:reflectional_symmetry_puzzle).permit(
         :title, :description, :language,
-        entries_attributes: [:id, :left_image, :right_image, :_destroy]
+        entries_attributes: [:id, :left_image, :right_image, :trivia, :_destroy]
       )
     end
   end

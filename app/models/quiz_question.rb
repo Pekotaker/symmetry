@@ -3,6 +3,7 @@ class QuizQuestion < ApplicationRecord
 
   belongs_to :quiz_category, optional: true
   has_one_attached :image, dependent: :purge_later
+  has_one_attached :correct_answer_image, dependent: :purge_later
 
   validates :title, presence: true
   validates :answers, presence: true
@@ -17,14 +18,16 @@ class QuizQuestion < ApplicationRecord
   private
 
   def acceptable_image
-    return unless image.attached?
+    [[:image, image], [:correct_answer_image, correct_answer_image]].each do |name, img|
+      next unless img.attached?
 
-    # Validate content type
-    acceptable_types = ["image/png", "image/jpeg", "image/gif"]
-    errors.add(:image, :invalid_content_type) unless acceptable_types.include?(image.content_type)
+      # Validate content type
+      acceptable_types = ["image/png", "image/jpeg", "image/gif"]
+      errors.add(name, :invalid_content_type) unless acceptable_types.include?(img.content_type)
 
-    # Validate file size (10MB max)
-    errors.add(:image, :file_too_large) if image.byte_size > 10.megabytes
+      # Validate file size (10MB max)
+      errors.add(name, :file_too_large) if img.byte_size > 10.megabytes
+    end
   end
 
   def correct_answer_index_within_bounds

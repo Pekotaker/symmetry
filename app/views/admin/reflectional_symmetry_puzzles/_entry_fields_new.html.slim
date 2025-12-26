@@ -29,3 +29,8 @@
           svg.h-8.w-8.text-zinc-600 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor"
             path stroke-linecap="round" stroke-linejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
       input[type="file" name="#{prefix}[right_image]" accept="image/*" class="block w-full text-xs text-zinc-400 file:mr-2 file:rounded-lg file:border-0 file:bg-zinc-700 file:px-3 file:py-1.5 file:text-xs file:font-medium file:text-white hover:file:bg-zinc-600 file:cursor-pointer" data-image-preview-target="input"]
+
+  / Trivia (simple textarea for new entries - rich text will be available after saving)
+  .mt-4
+    label.block.text-xs.font-medium.text-zinc-400.mb-2 = t('admin.reflectional_symmetry_puzzles.trivia')
+    p.text-xs.text-zinc-500.italic = t('admin.reflectional_symmetry_puzzles.trivia_hint')

@@ -71,6 +71,6 @@ class Admin::QuizQuestionsController < Admin::BaseController
   end
 
   def quiz_question_params
-    params.require(:quiz_question).permit(:title, :content, :image, :language, :quiz_category_id, answers: [], correct_answer_index: [])
+    params.require(:quiz_question).permit(:title, :content, :image, :correct_answer_image, :language, :quiz_category_id, answers: [], correct_answer_index: [])
   end
 end

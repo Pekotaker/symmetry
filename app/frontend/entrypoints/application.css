@@ -7,3 +7,80 @@
   --font-sans: "DM Sans", system-ui, sans-serif;
 }
 
+/* Action Text / Trix Editor Styles */
+trix-editor {
+  @apply block w-full rounded-lg border-0 bg-zinc-800 px-4 py-3 text-white ring-1 ring-inset ring-zinc-700 transition-colors focus:ring-2 focus:ring-amber-500 min-h-[120px];
+}
+
+trix-toolbar {
+  @apply bg-zinc-800 rounded-t-lg border border-b-0 border-zinc-700 p-2;
+}
+
+trix-toolbar .trix-button-group {
+  @apply border-zinc-600 rounded overflow-hidden;
+  margin-bottom: 0 !important;
+}
+
+trix-toolbar .trix-button {
+  @apply border-zinc-600 hover:bg-zinc-600;
+  background-color: rgb(63 63 70) !important; /* zinc-700 */
+}
+
+trix-toolbar .trix-button.trix-active {
+  background-color: rgb(245 158 11) !important; /* amber-500 */
+}
+
+trix-toolbar .trix-button--icon::before {
+  opacity: 0.9;
+  filter: invert(1);
+}
+
+/* Action Text Content Display */
+.trix-content {
+  @apply text-zinc-200;
+}
+
+.trix-content h1 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.trix-content p {
+  @apply mb-4;
+}
+
+.trix-content ul {
+  @apply list-disc list-inside mb-4;
+}
+
+.trix-content ol {
+  @apply list-decimal list-inside mb-4;
+}
+
+.trix-content a {
+  @apply text-amber-400 hover:text-amber-300 underline;
+}
+
+.trix-content strong {
+  @apply font-bold;
+}
+
+.trix-content em {
+  @apply italic;
+}
+
+/* Puzzle glow animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.6;
+    box-shadow: 0 0 20px 10px rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 40px 20px rgba(16, 185, 129, 0.6);
+  }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 1s ease-in-out infinite;
+}
+

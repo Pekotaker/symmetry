@@ -3,6 +3,7 @@ class ReflectionalSymmetryPuzzleEntry < ApplicationRecord
 
   has_one_attached :left_image, dependent: :purge_later
   has_one_attached :right_image, dependent: :purge_later
+  has_rich_text :trivia
 
   validate :images_present
   validate :acceptable_images

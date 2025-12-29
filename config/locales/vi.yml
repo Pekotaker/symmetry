@@ -302,25 +302,25 @@ vi:
     title: "Quản trị"
     access_denied: "Truy cập bị từ chối. Bạn phải là quản trị viên."
     nav:
-      quiz_questions: "Câu hỏi Quiz"
-      reflectional_symmetry_puzzles: "Câu đố Phản chiếu"
-      showcases: "Triển lãm"
+      quiz_questions: "Trắc nghiệm"
+      reflectional_symmetry_puzzles: "Ghép hình đối xứng"
+      showcases: "Ứng dụng"
       back_to_app: "Quay lại ứng dụng"
     quiz_questions:
-      created: "Câu hỏi quiz đã được tạo thành công."
-      updated: "Câu hỏi quiz đã được cập nhật thành công."
-      deleted: "Câu hỏi quiz đã được xóa thành công."
+      created: "Câu hỏi trắc nghiệm đã được tạo thành công."
+      updated: "Câu hỏi trắc nghiệm đã được cập nhật thành công."
+      deleted: "Câu hỏi trắc nghiệm đã được xóa thành công."
       delete_confirm: "Bạn có chắc chắn muốn xóa câu hỏi này?"
       index:
-        title: "Câu hỏi Quiz"
-        subtitle: "Quản lý câu hỏi quiz cho các module đối xứng"
+        title: "Câu hỏi Trắc nghiệm"
+        subtitle: "Quản lý câu hỏi trắc nghiệm cho các module đối xứng"
       new:
         title: "Câu hỏi mới"
       edit:
         title: "Chỉnh sửa câu hỏi"
       empty:
         title: "Chưa có câu hỏi nào"
-        description: "Bắt đầu bằng cách tạo câu hỏi quiz đầu tiên."
+        description: "Bắt đầu bằng cách tạo câu hỏi trắc nghiệm đầu tiên."
       fields:
         title: "Tiêu đề"
         content: "Nội dung"
@@ -394,20 +394,20 @@ vi:
       trivia_hint: "Lưu mục trước để thêm kiến thức thú vị"
       no_entries: "Chưa có mục nào. Thêm các cặp hình ảnh vào câu đố này."
     showcases:
-      created: "Triển lãm đã được tạo thành công."
-      updated: "Triển lãm đã được cập nhật thành công."
-      deleted: "Triển lãm đã được xóa thành công."
-      delete_confirm: "Bạn có chắc chắn muốn xóa triển lãm này?"
+      created: "Bài viết đã được tạo thành công."
+      updated: "Bài viết đã được cập nhật thành công."
+      deleted: "Bài viết đã được xóa thành công."
+      delete_confirm: "Bạn có chắc chắn muốn xóa bài viết này?"
       index:
-        title: "Triển lãm"
-        subtitle: "Quản lý các mục triển lãm"
+        title: "Bài viết"
+        subtitle: "Quản lý các mục bài viết"
       new:
-        title: "Triển lãm mới"
+        title: "Bài viết mới"
       edit:
-        title: "Chỉnh sửa triển lãm"
+        title: "Chỉnh sửa bài viết"
       empty:
-        title: "Chưa có triển lãm nào"
-        description: "Bắt đầu bằng cách tạo triển lãm đầu tiên."
+        title: "Chưa có bài viết nào"
+        description: "Bắt đầu bằng cách tạo bài viết đầu tiên."
       fields:
         title: "Tiêu đề"
         content: "Nội dung"
@@ -417,9 +417,9 @@ vi:
         reflectional: "Phản chiếu"
         point: "Tâm"
       form:
-        title_placeholder: "Nhập tiêu đề triển lãm..."
+        title_placeholder: "Nhập tiêu đề bài viết..."
         image_hint: "PNG, JPG, GIF tối đa 10MB"
         no_image: "Chưa chọn hình ảnh"
         errors:
-          one: "1 lỗi ngăn triển lãm này được lưu"
-          other: "%{count} lỗi ngăn triển lãm này được lưu"
+          one: "1 lỗi ngăn bài viết này được lưu"
+          other: "%{count} lỗi ngăn bài viết này được lưu"

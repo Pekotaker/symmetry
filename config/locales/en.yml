@@ -22,6 +22,14 @@ en:
               blank: "must be uploaded"
               invalid_content_type: "must be a PNG, JPG, or GIF"
               file_too_large: "must be less than 10MB"
+        showcase:
+          attributes:
+            image:
+              invalid_content_type: "must be a PNG, JPG, or GIF"
+              file_too_large: "must be less than 10MB"
+            video:
+              invalid_content_type: "must be MP4, WebM, or MOV"
+              file_too_large: "must be less than 100MB"
 
   # Site-wide
   site:
@@ -264,6 +272,8 @@ en:
     show:
       all_showcases: "All showcases"
       no_content: "No content available"
+      layout_side: "Side by side"
+      layout_stack: "Stacked (video mode)"
     symmetry_types:
       reflectional: "Reflectional"
       point: "Point"
@@ -412,6 +422,7 @@ en:
         title: "Title"
         content: "Content"
         image: "Image"
+        video: "Video"
         symmetry_type: "Symmetry Type"
       symmetry_types:
         reflectional: "Reflectional"
@@ -419,7 +430,10 @@ en:
       form:
         title_placeholder: "Enter the showcase title..."
         image_hint: "PNG, JPG, GIF up to 10MB"
+        video_hint: "MP4, WebM, MOV up to 100MB"
         no_image: "No image selected"
+        no_video: "No video selected"
+        no_symmetry: "None (no indicator)"
         errors:
           one: "1 error prevented this showcase from being saved"
           other: "%{count} errors prevented this showcase from being saved"

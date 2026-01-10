@@ -54,7 +54,7 @@ module Admin
     end
 
     def showcase_params
-      params.require(:showcase).permit(:title, :content, :image, :symmetry_type)
+      params.require(:showcase).permit(:title, :content, :image, :video, :symmetry_type)
     end
   end
 end

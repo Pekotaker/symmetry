@@ -22,6 +22,14 @@ vi:
               blank: "phải được tải lên"
               invalid_content_type: "phải là PNG, JPG hoặc GIF"
               file_too_large: "phải nhỏ hơn 10MB"
+        showcase:
+          attributes:
+            image:
+              invalid_content_type: "phải là PNG, JPG hoặc GIF"
+              file_too_large: "phải nhỏ hơn 10MB"
+            video:
+              invalid_content_type: "phải là MP4, WebM hoặc MOV"
+              file_too_large: "phải nhỏ hơn 100MB"
 
   # Site-wide
   site:
@@ -264,6 +272,8 @@ vi:
     show:
       all_showcases: "Tất cả triển lãm"
       no_content: "Chưa có nội dung"
+      layout_side: "Cạnh nhau"
+      layout_stack: "Xếp chồng (chế độ video)"
     symmetry_types:
       reflectional: "Phản chiếu"
       point: "Tâm"
@@ -412,6 +422,7 @@ vi:
         title: "Tiêu đề"
         content: "Nội dung"
         image: "Hình ảnh"
+        video: "Video"
         symmetry_type: "Loại đối xứng"
       symmetry_types:
         reflectional: "Phản chiếu"
@@ -419,7 +430,10 @@ vi:
       form:
         title_placeholder: "Nhập tiêu đề bài viết..."
         image_hint: "PNG, JPG, GIF tối đa 10MB"
+        video_hint: "MP4, WebM, MOV tối đa 100MB"
         no_image: "Chưa chọn hình ảnh"
+        no_video: "Chưa chọn video"
+        no_symmetry: "Không (không hiển thị)"
         errors:
           one: "1 lỗi ngăn bài viết này được lưu"
           other: "%{count} lỗi ngăn bài viết này được lưu"

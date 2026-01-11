@@ -1,6 +1,19 @@
 h2.text-2xl.font-bold.tracking-tight.text-white = t('auth.sign_in.title')
 p.mt-2.text-sm.text-zinc-400 = t('auth.sign_in.subtitle')
 
+/ Show resend confirmation option for unconfirmed users
+- if flash[:unconfirmed_email].present?
+  .mt-6.rounded-lg.border.border-amber-500/30.bg-amber-500/10.p-4
+    .flex.items-start.gap-3
+      svg.h-5.w-5.text-amber-400.mt-0.5.shrink-0 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+        path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+      .flex-1
+        p.text-sm.font-medium.text-amber-300 = t('auth.sign_in.unconfirmed_title')
+        p.mt-1.text-sm.text-amber-200/80 = t('auth.sign_in.unconfirmed_message')
+        = form_for(User.new, as: :user, url: user_confirmation_path, html: { method: :post, class: "mt-3" }) do |f|
+          = f.hidden_field :email, value: flash[:unconfirmed_email]
+          = f.submit t('auth.sign_in.resend_confirmation'), class: "inline-flex items-center gap-2 rounded-lg bg-amber-500 px-4 py-2 text-sm font-semibold text-black transition-colors hover:bg-amber-400 cursor-pointer"
+
 = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "mt-8 space-y-6" }) do |f|
   .space-y-4
     div

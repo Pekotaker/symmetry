@@ -118,6 +118,9 @@ vi:
       submit: "Đăng nhập"
       no_account: "Mới đến Symmetry?"
       sign_up_link: "Tạo tài khoản"
+      unconfirmed_title: "Email chưa được xác nhận"
+      unconfirmed_message: "Vui lòng kiểm tra hộp thư của bạn để xác nhận email, hoặc nhấn bên dưới để gửi lại."
+      resend_confirmation: "Gửi lại email xác nhận"
     
     sign_up:
       title: "Bắt đầu hành trình"

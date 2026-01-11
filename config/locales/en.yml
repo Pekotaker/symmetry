@@ -118,6 +118,9 @@ en:
       submit: "Sign in"
       no_account: "New to Symmetry?"
       sign_up_link: "Create an account"
+      unconfirmed_title: "Email not confirmed"
+      unconfirmed_message: "Please check your inbox for the confirmation email, or click below to resend it."
+      resend_confirmation: "Resend confirmation email"
     
     sign_up:
       title: "Start your journey"
